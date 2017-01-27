@@ -2,62 +2,75 @@
 <html>
 <head>
   <meta charset="UTF-8">
-  <meta name="keywords" content="social,media,meditation,mindfulness,art,post-internet">
+  <meta name="keywords" content="social,media,meditation,mindfulness,contemporary,post-internet">
   <meta name="author" content="Matthias Pitscher">
   <title>Social Media Meditation</title>
   <link rel="stylesheet" type="text/css" href="css/normalize.css" />
 
   <style>
-    @import url('https://fonts.googleapis.com/css?family=Nunito:400,700');
+    @import url('https://fonts.googleapis.com/css?family=Work+Sans:600');
+    @media screen and (max-device-width: 800px) {
+      html{
+       height:100%;
+       min-height:100%;
+       }
 
-    html{
-     height:100%;
-     min-height:100%;
-     }
+      body{
+        min-height: 100%;
+        background-image: url(img/smm-big.jpg);
+        background-position: center center;
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+        background-size: cover;
+      }
+}
 
-    body{
-      min-height: 100%;
-      background-image: url(img/smm-big.jpg);
-      background-position: center center;
-      background-repeat: no-repeat;
-      background-attachment: fixed;
-      background-size: cover;
-    }
 
     #center{
       position: absolute;
       text-align: center;
       line-height: 1;
-      width:100%;
+      left: 50%;
+      top:50%;
+    }
+
+    video#bgvid {
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      min-height: 100%;
+      min-width: 100%;
+      width: auto;
+      height: auto;
+      z-index: -100;
+      -ms-transform: translateX(-50%) translateY(-50%);
+      -moz-transform: translateX(-50%) translateY(-50%);
+      -webkit-transform: translateX(-50%) translateY(-50%);
+      transform: translateX(-50%) translateY(-50%);
+      background: url(img/smm-big.jpg) no-repeat;
+      background-size: cover;
     }
 
     h1{
-      color: #acacaf;
-      color: rgba(150,160,160,0.6);
-      font-family: 'Nunito', Helvetica, Arial, sans-serif;
-      font-size: 50px;
-      font-weight: 700;
+      color: #ffffff;
+      text-shadow: 0px 0px 4px rgba(50,50,0,0.7);
+      font-family: 'Work Sans', Helvetica, Arial, sans-serif;
+      font-size: 30px;
+      font-weight: 600;
       margin:0;
-      margin-top: 0.8em;
-    }
-
-    p{
-      color: #acacaf;
-      color: rgba(150,160,160,0.6);
-      font-family: 'Nunito', Helvetica, Arial, sans-serif;
-      font-size: 25px;
-      font-weight: 400;
-      margin:0;
+      transform: translate(-55%,-50%);
     }
   </style>
 
 </head>
 <body>
+
+  <video playsinline autoplay muted loop poster="img/smm-big.jpg" id="bgvid">
+      <source src="scrolling_loop.webm" type="video/webm">
+      <source src="scrolling_loop.mp4" type="video/mp4">
+  </video>
   <div id="center">
-    <h1>#SocialMediaMeditation</h1>
-    <p>
-      is coming soon...
-    </p>
+    <h1>#socialmediameditation</h1>
   </div>
 </body>
 </html>
