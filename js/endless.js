@@ -4,8 +4,6 @@ var scrollPosition = 0;
 var ticking = false;
 
 
-
-
 window.addEventListener('scroll', function(e) {
   last_known_scroll_position = window.scrollY;
   if (!ticking) {
