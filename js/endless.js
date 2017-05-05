@@ -9,11 +9,14 @@ window.addEventListener('scroll', function(e) {
   if (!ticking) {
     window.requestAnimationFrame(function() {
       if(last_known_scroll_position >= scrollPosition){
+        var rand = Math.floor((Math.random()*400)+100);
         var div = document.createElement("div");
         div.className = "container";
+        div.style.height = rand.toString() +'px';
         document.body.appendChild(div);
-        console.log(last_known_scroll_position)
-        scrollPosition += divHeight;
+        //console.log(last_known_scroll_position)
+        console.log(rand)
+        scrollPosition += rand;
       }
       ticking = false;
     });
