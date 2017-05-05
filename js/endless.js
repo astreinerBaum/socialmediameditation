@@ -1,5 +1,5 @@
 var last_known_scroll_position = 0;
-var divsize = 300;
+var divHeight = 600;
 var scrollPosition = 0;
 var ticking = false;
 
@@ -15,7 +15,7 @@ window.addEventListener('scroll', function(e) {
         div.className = "container";
         document.body.appendChild(div);
         console.log(last_known_scroll_position)
-        scrollPosition += divsize;
+        scrollPosition += divHeight;
       }
       ticking = false;
     });
