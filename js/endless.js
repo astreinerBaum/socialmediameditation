@@ -15,7 +15,6 @@ window.addEventListener('scroll', function(e) {
         div.style.height = rand.toString() +'px';
         document.body.appendChild(div);
         //console.log(last_known_scroll_position)
-        console.log(rand)
         scrollPosition += rand;
       }
       ticking = false;
