@@ -1,5 +1,5 @@
 var last_known_scroll_position = 0;
-var divHeight = 600;
+var divHeight = 412;
 var scrollPosition = 0;
 var ticking = false;
 
