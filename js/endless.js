@@ -3,7 +3,6 @@ var divHeight = 412;
 var scrollPosition = 0;
 var ticking = false;
 
-
 window.addEventListener('scroll', function(e) {
   last_known_scroll_position = window.scrollY;
   if (!ticking) {
@@ -22,3 +21,28 @@ window.addEventListener('scroll', function(e) {
   }
   ticking = true;
 });
+
+function removeText() {
+  document.getElementById("first").innerHTML = "";
+}
+
+window.addEventListener("keydown", function (event) {
+  if (event.defaultPrevented) {
+    return; // Do nothing if the event was already processed
+  }
+  if (event.key == "A" || event.key == "a"){
+    pageScroll();
+  }
+  if (event.key == "S" || event.key == "s"){
+    pageScrollStop();
+  }
+})
+
+function pageScroll(){
+    window.scrollBy(0,1);
+    scrolldelay = setTimeout(pageScroll,10);
+}
+
+function pageScrollStop(){
+    clearTimeout(scrolldelay);
+}
