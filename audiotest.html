@@ -1,0 +1,28 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="keywords" content="social,media,meditation,mindfulness,contemporary,post-internet">
+  <meta name="author" content="Matthias Pitscher">
+  <title>Social Media Meditation</title>
+  <link rel="stylesheet" type="text/css" href="css/normalize.css" />
+  <link rel="stylesheet" type="text/css" href="css/style.css"  />
+
+
+</head>
+<body>
+
+  <video playsinline autoplay muted loop poster="img/smm-preview.jpg" id="bgvid">
+      <source src="video/scrolling_loop.webm" type="video/webm">
+      <source src="video/scrolling_loop.mp4" type="video/mp4">
+  </video>
+
+  <div id="center">
+    <audio id="player" src="audio/SMMLesson1.mp3"></audio>
+    <div>
+      <button onclick="document.getElementById('player').play()">Play</button>
+      <button onclick="document.getElementById('player').pause()">Pause</button>
+    </div>
+  </div>
+</body>
+</html>
