@@ -26,7 +26,27 @@
       width: 100%;
       top: 40%;
       text-align: center;
+    }
 
+    .social{
+      position: fixed;
+      left: 20px;
+      top: 30px;
+      z-index: 1;
+      display: -webkit-flex;
+      -webkit-flex-direction: column; /* Safari 6.1+ */
+      display: flex;
+      flex-direction: column;
+    }
+
+    .socialElement{
+      filter: blur(1px);
+      padding-left: 10px;
+
+    }
+
+    .socialElement:hover{
+      filter: blur(0);
     }
 
     .box{
@@ -67,9 +87,12 @@
         width: 100%;
         border-radius: 0px;
       }
+
+      .social{
+        flex-direction: row;
+        -webkit-flex-direction: row;
+      }
     }
-
-
 
     button {
       margin-top: 50px;
@@ -79,7 +102,7 @@
     }
 
     button#playpausebtn {
-      background: url(img/Play.png) no-repeat;
+      background: url(../img/Play.png) no-repeat;
       background-size: contain;
       width: 144px;
       height: 144px;

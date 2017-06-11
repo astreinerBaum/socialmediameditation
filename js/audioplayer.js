@@ -4,8 +4,6 @@ function initAudioPlayer(){
 
   // Set object references
 	playbtn = document.getElementById("playpausebtn");
-  playbtn.style.background = "url(img/Play.png) no-repeat";
-  playbtn.style.backgroundSize = "contain";
   // Add Event Handling
 	playbtn.addEventListener("click",playPause);
 
