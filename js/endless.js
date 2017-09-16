@@ -1,20 +1,43 @@
-var last_known_scroll_position = 0;
-var divHeight = 412;
-var scrollPosition = 0;
+/*********************************************************
+  This JavaScript section contains all the magic for the
+  artwork "mindful scrolling" by Matthias Pitscher.
+  No changes shall be made on the original code without
+  getting in contact with the artist first. If this is
+  not possible the code should be changed according
+  to the comments that explain the general concept.
+  The code is licensed under GNU GPL and therefore can
+  be used as free software. As mentioned before,
+  the artwork belongs to "Archiv der Moderne", who have
+  the solitary right to exhibit this work.
+ *********************************************************/
+
+ /********************************************************
+                          CONCEPT
+  White boxes are centered on the screen with a border-
+  radius of 4px. The background is greyblue (#E9EBEE).
+  The first box reads "What's on your Mind", which dis-
+  appears when the user clicks on it.
+  The second and all additional boxes are underneath with
+  a gap of 12px.
+  New boxes with a random height between 100px and 500px
+  are generated when the user scrolls down.
+  ********************************************************/
+
+var scroll_position = 0; //Current scroll position
+var end_scroll_position = 0; //Position when new Divs get created
 var ticking = false;
 
 window.addEventListener('scroll', function(e) {
-  last_known_scroll_position = window.scrollY;
+  scroll_position = window.scrollY;
   if (!ticking) {
     window.requestAnimationFrame(function() {
-      if(last_known_scroll_position >= scrollPosition){
+      if( scroll_position >= end_scroll_position){
         var rand = Math.floor((Math.random()*400)+100);
         var div = document.createElement("div");
         div.className = "container";
         div.style.height = rand.toString() +'px';
         document.body.appendChild(div);
-        //console.log(last_known_scroll_position)
-        scrollPosition += rand;
+        end_scroll_position += rand;
       }
       ticking = false;
     });
@@ -22,8 +45,8 @@ window.addEventListener('scroll', function(e) {
   ticking = true;
 });
 
-function removeText() {
-  document.getElementById("first").innerHTML = "";
+function removeText(e) {
+  e.innerHTML = "";
 }
 
 window.addEventListener("keydown", function (event) {
