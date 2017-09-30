@@ -1,8 +1,9 @@
-<!doctype html>
+<!DOCTYPE html>
 
 <!--
 
 Mindful Scrolling by Matthias Pitscher, 2017. www.pitscher.net
+Also check www.socialmediameditation.net
 
 This work is part of:
 Archiv der Moderne
@@ -24,33 +25,33 @@ Bauhausstraße 7b
 
   <script>
     /*********************************************************
-      This JavaScript section contains all the magic for the
-      artwork "mindful scrolling" by Matthias Pitscher.
-      No changes shall be made on the original code without
-      getting in contact with the artist first. If this is
-      not possible the code should be changed according
-      to the comments that explain the general concept.
-      The code is licensed under GNU GPL and therefore can
-      be used as free software. As mentioned before,
-      the artwork belongs to "Archiv der Moderne", who have
-      the solitary right to exhibit this work.
-    *********************************************************/
+          This JavaScript section contains all the magic for the
+          artwork "mindful scrolling" by Matthias Pitscher.
+          No changes shall be made on the original code without
+          getting in contact with the artist first. If this is
+          not possible the code should be changed according
+          to the comments that explain the general concept.
+          The code is licensed under GNU GPL and therefore can
+          be used as free software. As mentioned before,
+          the artwork belongs to "Archiv der Moderne", who have
+          the solitary right to exhibit this work.
+        *********************************************************/
 
     /********************************************************
                              CONCEPT
-     White boxes are centered on the screen with a border-
-     radius of 4px. The background is greyblue (#E9EBEE).
-     The first box reads "What's on your Mind", which dis-
-     appears when the user clicks on it.
-     The second and all additional boxes are underneath with
-     a gap of 12px.
-     New boxes with a random height between 100px and 400px
-     are generated when the user scrolls down.
+      White boxes are centered on the screen with a border-
+      radius of 4px. The background is greyblue (#E9EBEE).
+      The first box reads "What's on your Mind", which dis-
+      appears when the user clicks on it.
+      The second and all additional boxes are underneath with
+      a gap of 12px.
+      New boxes with a random height between 100px and 400px
+      are generated when the user scrolls down.
     ********************************************************/
 
-    var scroll_position = 0;     //Current scroll position
+    var scroll_position = 0; //Current scroll position
     var end_scroll_position = 0; //Position when new Divs get created
-    var ticking = false;         //only check for scroll_position, if user is actually scrolling
+    var ticking = false; //only check for scroll_position, if user is actually scrolling
 
     window.addEventListener('scroll', function(e) {
       scroll_position = window.scrollY;
@@ -145,8 +146,8 @@ Bauhausstraße 7b
       box-sizing: border-box;
       font-family: Helvetica, sans-serif;
     }
-
     /* The white container stretches to full width on small screens */
+
     @media only screen and (max-width: 600px) {
       .container {
         width: 100%;
@@ -160,15 +161,25 @@ Bauhausstraße 7b
 <body>
 
   <div class="container" id="first" onclick="removeText(this)"> What's on your mind?</div>
-  <div class="container"></div>
-  <div class="container"></div>
-  <div class="container"></div>
-  <div class="container"></div>
-  <div class="container"></div>
-  <div class="container"></div>
-  <div class="container"></div>
-  <div class="container"></div>
-  <div class="container"></div>
+  <div class="container" style="height: 128px;"></div>
+  <div class="container" style="height: 269px;"></div>
+  <div class="container" style="height: 417px;"></div>
+  <div class="container" style="height: 212px;"></div>
+  <div class="container" style="height: 139px;"></div>
+  <div class="container" style="height: 193px;"></div>
+  <div class="container" style="height: 351px;"></div>
+  <div class="container" style="height: 343px;"></div>
+  <div class="container" style="height: 141px;"></div>
+  <div class="container" style="height: 149px;"></div>
+  <div class="container" style="height: 102px;"></div>
+  <div class="container" style="height: 312px;"></div>
+  <div class="container" style="height: 495px;"></div>
+  <div class="container" style="height: 453px;"></div>
+  <div class="container" style="height: 440px;"></div>
+  <div class="container" style="height: 353px;"></div>
+  <div class="container" style="height: 446px;"></div>
+  <div class="container" style="height: 385px;"></div>
+
 
 </body>
 
