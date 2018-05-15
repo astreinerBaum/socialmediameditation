@@ -10,12 +10,12 @@
 <head>
     <title>WebRTC Video Broadcasting</title>
 
-    <script>
+    <!-- <script>
         if (!location.hash.replace('#', '').length) {
             location.href = location.href.split('#')[0] + '#' + (Math.random() * 100).toString().replace('.', '');
             location.reload();
         }
-    </script>
+    </script> -->
 
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta charset="utf-8">
@@ -78,17 +78,13 @@
             padding: .5em;
         }
     </style>
-    <script>
-        document.createElement('article');
-        document.createElement('footer');
-    </script>
 
     <!-- scripts used for broadcasting -->
     <script src="https://cdn.webrtc-experiment.com/socket.io.js"> </script>
     <!-- Signaling -->
     <script src="https://cdn.webrtc-experiment.com/RTCPeerConnection-v1.5.js"> </script>
     <!-- WebRTC simple wrapper -->
-    <script src="https://cdn.webrtc-experiment.com/webrtc-broadcasting/broadcast.js"> </script>
+    <script src="broadcast.js"> </script>
     <!-- Multi-user connectivity handler -->
 
     <!-- This Library is used to detect WebRTC features -->
