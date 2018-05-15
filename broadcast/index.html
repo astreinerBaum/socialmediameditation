@@ -8,7 +8,7 @@
 <html lang="en">
 
 <head>
-    <title>WebRTC Video Broadcasting</title>
+    <title>Broadcasting</title>
 
     <!-- <script>
         if (!location.hash.replace('#', '').length) {
@@ -20,7 +20,7 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
-    <link rel="author" type="text/html" href="https://plus.google.com/+MuazKhan">
+    <link rel="author" type="text/html" href="pitscher">
     <meta name="author" content="Muaz Khan">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 
@@ -96,20 +96,20 @@
         <!-- copy this <section> and next <script> -->
         <section class="experiment">
             <section>
-                <select id="broadcasting-option">
+                <!-- <select id="broadcasting-option">
                     <option>Audio + Video</option>
                     <option>Only Audio</option>
                     <option>Screen</option>
                 </select>
-                <input type="text" id="broadcast-name">
-                <button id="setup-new-broadcast" class="setup">Setup New Broadcast</button>
+                <input type="text" id="broadcast-name"> -->
+                <button id="setup-new-broadcast" class="setup visible">Setup New Broadcast</button>
             </section>
 
             <!-- list of all available broadcasting rooms -->
             <table style="width: 100%;" id="rooms-list"></table>
 
             <!-- local/remote videos container -->
-            <div id="videos-container"></div>
+            <!-- <div id="videos-container"></div> -->
         </section>
 
         <script>
@@ -182,7 +182,7 @@
             };
 
             function setupNewBroadcastButtonClickHandler() {
-                document.getElementById('broadcast-name').disabled = true;
+                // document.getElementById('broadcast-name').disabled = true;
                 document.getElementById('setup-new-broadcast').disabled = true;
 
                 DetectRTC.load(function () {
@@ -196,7 +196,7 @@
                         }
 
                         broadcastUI.createRoom({
-                            roomName: (document.getElementById('broadcast-name') || {}).value || 'Anonymous',
+                            roomName: 'Social Media Meditation',
                             isAudio: shared === 'audio'
                         });
                     });
@@ -206,7 +206,7 @@
 
             function captureUserMedia(callback) {
                 var constraints = null;
-                window.option = broadcastingOption ? broadcastingOption.value : '';
+                window.option = 'Only Audio';
                 if (option === 'Only Audio') {
                     constraints = {
                         audio: true,
@@ -215,22 +215,6 @@
 
                     if (DetectRTC.hasMicrophone !== true) {
                         alert('DetectRTC library is unable to find microphone; maybe you denied microphone access once and it is still denied or maybe microphone device is not attached to your system or another app is using same microphone.');
-                    }
-                }
-                if (option === 'Screen') {
-                    var video_constraints = {
-                        mandatory: {
-                            chromeMediaSource: 'screen'
-                        },
-                        optional: []
-                    };
-                    constraints = {
-                        audio: false,
-                        video: video_constraints
-                    };
-
-                    if (DetectRTC.isScreenCapturingSupported !== true) {
-                        alert('DetectRTC library is unable to find screen capturing support. You MUST run chrome with command line flag "chrome --enable-usermedia-screen-capturing"');
                     }
                 }
 
