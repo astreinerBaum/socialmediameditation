@@ -102,7 +102,7 @@
                     <option>Screen</option>
                 </select>
                 <input type="text" id="broadcast-name"> -->
-                <button id="setup-new-broadcast" class="setup visible">Setup New Broadcast</button>
+                <button id="setup-new-broadcast" class="setup">Setup New Broadcast</button>
             </section>
 
             <!-- list of all available broadcasting rooms -->
@@ -151,6 +151,7 @@
                     rotateInCircle(htmlElement);
                 },
                 onRoomFound: function (room) {
+                    document.getElementById('setup-new-broadcast').style.display = 'none';
                     var alreadyExist = document.querySelector('button[data-broadcaster="' + room.broadcaster + '"]');
                     if (alreadyExist) return;
 
