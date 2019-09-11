@@ -12,11 +12,12 @@ function initAudioPlayer(){
 		if(audio.paused){
 		    audio.play();
 		    playbtn.style.background = "url(img/Pause.png) no-repeat";
-        playbtn.style.backgroundSize = "contain";
+        	playbtn.style.backgroundSize = "contain";
       } else {
-		    audio.pause();
+			audio.pause();
+			audio.currentTime = 0;
 		    playbtn.style.background = "url(img/Play.png) no-repeat";
-        playbtn.style.backgroundSize = "contain";
+        	playbtn.style.backgroundSize = "contain";
 	    }
 	}
 }
