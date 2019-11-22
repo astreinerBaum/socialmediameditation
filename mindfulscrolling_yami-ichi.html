@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+
+<!--
+
+Mindful Scrolling by Matthias Pitscher, 2017. www.pitscher.net
+Also check www.socialmediameditation.net
+
+This work is part of:
+Archiv der Moderne
+Sammlung für Architektur, Ingenieurbau, Kunst und Design
+Bauhausstraße 7b
+99423 Weimar
+
+-->
+
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+  <meta name="keywords" content="social,media,meditation,mindfulness,contemporary,post-internet">
+  <meta name="author" content="Matthias Pitscher">
+  <title>Mindful Scrolling</title>
+  <link rel="icon" href="ms-favicon.ico" type="image/ico">
+
+  <script>
+    /*********************************************************
+      This JavaScript section contains all the magic for the
+      artwork "mindful scrolling" by Matthias Pitscher.
+      No changes shall be made on the original code without
+      getting in contact with the artist first. If this is
+      not possible the code should be changed according
+      to the comments that explain the general concept.
+      The code is licensed under GNU GPL and therefore can
+      be used as free software. As mentioned before,
+      the artwork belongs to "Archiv der Moderne", who have
+      the solitary right to exhibit this work.
+    *********************************************************/
+
+    /********************************************************
+                             CONCEPT
+      White boxes are centered on the screen with a border-
+      radius of 4px. The background is greyblue (#E9EBEE).
+      The first box reads "What's on your Mind", which dis-
+      appears when the user clicks on it.
+      The second and all additional boxes are underneath with
+      a gap of 12px.
+      New boxes with a random height between 100px and 400px
+      are generated when the user scrolls down.
+    ********************************************************/
+
+    var scroll_position = 0; //Current scroll position
+    var end_scroll_position = 0; //Position when new Divs get created
+    var ticking = false; //only check for scroll_position, if user is actually scrolling
+    var messages = [
+      "Guru Guide <br> <del>20€</del> 15€", 
+      "Meditation Pillow <br> <del>40€</del> 35€",
+      "Guru Guide Ebook <br> 5€",
+      "RATE US <br> 5€ DISCOUNT"
+      ]
+
+    window.addEventListener('scroll', function(e) {
+      scroll_position = window.scrollY;
+      if (!ticking) {
+        window.requestAnimationFrame(function() {
+          if (scroll_position >= end_scroll_position) {
+            var rand = Math.floor((Math.random() * 300) + 100);
+            var div = document.createElement("div");
+            div.className = "container";
+            div.style.height = rand.toString() + 'px';
+            div.innerHTML = messages[Math.floor(Math.random()*messages.length)];
+            document.body.appendChild(div);
+            end_scroll_position += rand;
+          }
+          ticking = false;
+        });
+      }
+      ticking = true;
+    });
+
+    /* REMOVE TEXT ON CLICK */
+    function removeText(e) {
+      e.innerHTML = "";
+    }
+
+    /***************************************
+              AUTOMATIC SCROLLING
+            for exhibition purposes
+
+     PRESS A to start scrolling
+     PRESS S to stop
+
+     multiple presses result in faster
+     scrolling.
+    ***************************************/
+
+    window.addEventListener("keydown", function(event) {
+      if (event.defaultPrevented) {
+        return; // Do nothing if the event was already processed
+      }
+      if (event.key == "A" || event.key == "a") {
+        pageScroll();
+      }
+      if (event.key == "S" || event.key == "s") {
+        pageScrollStop();
+      }
+    })
+
+    function pageScroll() {
+      window.scrollBy(0, 1);
+      scrolldelay = setTimeout(pageScroll, 30);
+    }
+
+    function pageScrollStop() {
+      clearTimeout(scrolldelay);
+    }
+  </script>
+
+  <style>
+    /************************************
+     The style copies the theme of the
+     facebook feed in 2017.
+    ************************************/
+
+    html {
+      /* Correct the line height in all browsers.*/
+      line-height: 1.15;
+      /* Prevent adjustments of font size after orientation changes in IE on Windows Phone and in iOS. */
+      -ms-text-size-adjust: 100%;
+      -webkit-text-size-adjust: 100%;
+    }
+
+    body {
+      margin: 0;
+      background: #E9EBEE;
+      font-family: Helvetica, sans-serif;
+    }
+
+    .container {
+      display: block;
+      background: #fff;
+      padding: 30px;
+      font-size: 1.8em;
+      line-height: 1.8;
+      color: #90949C;
+      max-width: 500px;
+      height: 400px;
+      margin: 0 auto;
+      margin-top: 12px;
+      border-radius: 4px;
+      box-shadow: 0px 0px 2px #888888;
+    }
+
+    del{
+      color: rgb(216, 216, 218);
+
+    }
+
+    #first {
+      height: 70px;
+      color: #90949C;
+      padding: 30px;
+      box-sizing: border-box;
+      font-family: Helvetica, sans-serif;
+    }
+    /* The white container stretches to full width on small screens */
+
+    @media only screen and (max-width: 600px) {
+      .container {
+        width: 100%;
+        border-radius: 0px;
+      }
+    }
+  </style>
+
+</head>
+
+<body>
+
+  <div class="container" id="first" onclick="removeText(this)"> What's on your mind?</div>
+  <div class="container" style="height: 128px;"></div>
+  <div class="container" style="height: 269px;"></div>
+  <div class="container" style="height: 417px;"></div>
+  <div class="container" style="height: 212px;"></div>
+  <div class="container" style="height: 139px;"></div>
+  <div class="container" style="height: 193px;"></div>
+  <div class="container" style="height: 351px;"></div>
+  <div class="container" style="height: 343px;"></div>
+  <div class="container" style="height: 141px;"></div>
+  <div class="container" style="height: 149px;"></div>
+  <div class="container" style="height: 102px;"></div>
+  <div class="container" style="height: 312px;"></div>
+  <div class="container" style="height: 495px;"></div>
+  <div class="container" style="height: 453px;"></div>
+  <div class="container" style="height: 440px;"></div>
+  <div class="container" style="height: 353px;"></div>
+  <div class="container" style="height: 446px;"></div>
+  <div class="container" style="height: 385px;"></div>
+
+
+</body>
+
+</html>
