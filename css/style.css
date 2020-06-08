@@ -56,8 +56,9 @@
       border-radius: 25px;
     }
 
-    .socialElement:hover{
-
+    .topright{
+      position: fixed;
+      right: 20px;
     }
 
     .box{
@@ -221,6 +222,11 @@
         -webkit-flex-direction: row;
         flex-wrap: wrap;
         justify-content: space-between;
+      }
+
+      .topright{
+        position: unset;
+        
       }
 
       .socialElement{
