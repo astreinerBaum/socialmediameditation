@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="keywords"
+      content="social,media,meditation,mindfulness,contemporary,post-internet"
+    />
+    <meta name="author" content="Matthias Pitscher" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, user-scalable=no"
+    />
+    <link rel="icon" type="image/png" href="favicon-32x32.png" sizes="32x32" />
+    <link rel="icon" type="image/png" href="favicon-16x16.png" sizes="16x16" />
+    <title>Social Media Meditation</title>
+    <link
+      href="https://fonts.googleapis.com/css?family=Work+Sans:600"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" type="text/css" href="css/normalize.css" />
+    <link rel="stylesheet" type="text/css" href="css/style.css" />
+    <script src="js/scroll.js"></script>
+
+    <style>
+      .wrapper::-webkit-scrollbar {
+        display: none;
+      }
+      body:-webkit-full-screen {
+        cursor: none;
+      }
+
+      body:-moz-full-screen {
+        cursor: none;
+      }
+
+      body:-ms-fullscreen {
+        cursor: none;
+      }
+
+      body:fullscreen {
+        cursor: none;
+      }
+      .wrapper {
+        scrollbar-width: none;
+        position: fixed;
+        width: 100%;
+        height: 100%;
+        overflow-y: scroll;
+      }
+      .container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background: #fff;
+        padding: 30px;
+        font-size: 1.2em;
+        line-height: 1.4;
+        color: #90949c;
+        max-width: 500px;
+        height: 400px;
+        margin: 0 auto;
+        margin-top: 12px;
+        border-radius: 4px;
+        box-shadow: 0px 0px 10px #8888aa;
+        word-break: break-all;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div id="bgvid">
+      <video playsinline autoplay muted loop poster="img/smm-preview.jpg">
+        <!-- <source src="video/scrolling_loop.webm" type="video/webm" /> -->
+        <source src="video/scrolling_loop_HQ.mp4" type="video/mp4" />
+      </video>
+    </div>
+
+    <audio id="guidedMeditation" preload="none">
+      <source src="audio/SMM_DE.m4a" type="audio/mp4" />
+      <source src="audio/SMM_DE.ogg" type="audio/ogg" />
+      Your Browser does not support HTML5 audio.
+    </audio>
+
+    <audio id="guidedMeditation-english" preload="none">
+      <source src="audio/SMMLesson1.m4a" type="audio/mp4" />
+      <source src="audio/SMMLesson1.ogg" type="audio/ogg" />
+      Your Browser does not support HTML5 audio.
+    </audio>
+    <div class="wrapper">
+      <div class="container" style="height: 269px"></div>
+      <div class="container" style="height: 417px"></div>
+      <div class="container" style="height: 212px"></div>
+      <div class="container" style="height: 139px"></div>
+      <div class="container" style="height: 193px"></div>
+      <div class="container" style="height: 351px"></div>
+      <div class="container" style="height: 343px"></div>
+      <div class="container" style="height: 141px"></div>
+      <div class="container" style="height: 149px"></div>
+      <div class="container" style="height: 102px"></div>
+    </div>
+  </body>
+  <script>
+    //go fullscreen
+    document.addEventListener(
+      "click",
+      function () {
+        fullScreen(document.body)
+      },
+      false
+    )
+
+    //helper function
+    function fullScreen(element) {
+      if (element.requestFullScreen) {
+        element.requestFullScreen()
+      } else if (element.webkitRequestFullScreen) {
+        element.webkitRequestFullScreen()
+      } else if (element.mozRequestFullScreen) {
+        element.mozRequestFullScreen()
+      }
+    }
+
+    let audio = document.getElementById("guidedMeditation")
+    let audioen = document.getElementById("guidedMeditation-english")
+    document.addEventListener("keyup", function (event) {
+      if (event.key === "k") {
+        if(audio.paused){
+          audio.currentTime = 0
+          audio.play()
+        }else{
+          audio.pause()
+        }
+      }
+      if (event.key === "e") {
+        if(audioen.paused){
+          audioen.currentTime = 0
+          audioen.play()
+        }else{
+          audioen.pause()
+        }
+        
+      }
+    })
+
+    let scroll_position = 0 //Current scroll position
+    let end_scroll_position = 0 //Position when new Divs get created
+    let ticking = false //only check for scroll_position, if user is actually scrolling
+    let messages = [
+      "socialmediameditation.net",
+      "mindful scrolling",
+      "#smm",
+      "trust the network",
+      "become one with your phone",
+      "endless scrolling",
+      "screen awareness",
+      "love and like",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+    ]
+
+    let wrapper = document.querySelector('.wrapper')
+    wrapper.addEventListener("scroll", function (e) {
+      scroll_position = wrapper.scrollTop
+      // console.log('scrollY:', scroll_position)
+      if (!ticking) {
+        window.requestAnimationFrame(function () {
+          if (scroll_position >= end_scroll_position) {
+            let rand = Math.floor(Math.random() * 100 + 100)
+            let randX = Math.floor(Math.random() * 100 + 100)
+            let div = document.createElement("div")
+            div.className = "container"
+            div.style.height = rand.toString() + "px"
+            div.style.width = randX.toString() + "px"
+            div.style.transform = `translateX(${
+              (Math.random() - 0.5) * 10 * rand
+            }px)`
+            div.innerHTML =
+              messages[Math.floor(Math.random() * messages.length)]
+            wrapper.appendChild(div)
+            end_scroll_position += rand
+          }
+          ticking = false
+        })
+      }
+      ticking = true
+    })
+
+    function pageScroll() {
+      wrapper.scrollBy(0, 1)
+      scrolldelay = setTimeout(pageScroll, 30)
+    }
+
+    function pageScrollStop() {
+      clearTimeout(scrolldelay)
+    }
+
+    pageScroll()
+  </script>
+</html>
