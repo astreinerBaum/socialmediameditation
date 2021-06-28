@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="keywords"
+      content="social,media,meditation,mindfulness,contemporary,post-internet"
+    />
+    <meta name="author" content="Matthias Pitscher" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, user-scalable=no"
+    />
+    <meta name="theme-color" content="#d5dce8" />
+    <link rel="icon" type="image/png" href="favicon-32x32.png" sizes="32x32" />
+    <link rel="icon" type="image/png" href="favicon-16x16.png" sizes="16x16" />
+    <link rel="apple-touch-icon" href="apple-icon-180.png" />
+
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <title>Social Media Meditation</title>
+    <link rel="stylesheet" type="text/css" href="font/style.css" />
+    <link rel="stylesheet" type="text/css" href="css/normalize.css" />
+    <link rel="stylesheet" type="text/css" href="css/style.css" />
+    <link rel="manifest" href="manifest.json" />
+    <script src="scroll.js"></script>
+
+    <script>
+      if ("serviceWorker" in navigator) {
+        navigator.serviceWorker.register("service-worker.js");
+      } else {
+        console.log("Service worker is not supported");
+      }
+    </script>
+
+    <style>
+      .wrapper {
+        scrollbar-width: none;
+        position: fixed;
+        width: 100%;
+        height: 100%;
+        overflow-y: scroll;
+        overflow-x: hidden;
+      }
+      .container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background: #fff;
+        padding: 30px;
+        font-size: 1.2em;
+        line-height: 1.4;
+        color: #d5dce8;
+        max-width: 500px;
+        height: 400px;
+        margin: 0 auto;
+        margin-top: 12px;
+        border-radius: 4px;
+        box-shadow: 0px 0px 10px #8888aa;
+        word-break: break-all;
+      }
+      .first {
+        height: 200vh;
+        width: 100%;
+        padding-top: 45vh;
+        text-align: center;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div id="bgvid">
+      <video playsinline autoplay muted loop poster="video/smm-preview.jpg">
+        <!-- <source src="video/scrolling_loop.webm" type="video/webm" /> -->
+        <source src="video/scrolling_loop_HQ.mp4" type="video/mp4" />
+      </video>
+    </div>
+
+    <audio id="guidedMeditation-english" preload="auto">
+      <source src="audio/SMMLesson1.m4a" type="audio/mp4" />
+      <source src="audio/SMMLesson1.ogg" type="audio/ogg" />
+      Your Browser does not support HTML5 audio.
+    </audio>
+    <div class="wrapper">
+      <div class="first">
+        <h1>
+          Press anywhere to start <br> Social Media Meditation
+        </h1>
+      </div>
+    </div>
+  </body>
+
+  <script>
+    //go fullscreen
+    document.addEventListener(
+      "click",
+      function () {
+        let audio_en = document.getElementById("guidedMeditation-english");
+        playAudio(audio_en);
+        //fullScreen(document.body);
+      },
+      false
+    );
+
+    //fullscreen helper function
+    function fullScreen(element) {
+      if (element.requestFullScreen) {
+        element.requestFullScreen();
+      } else if (element.webkitRequestFullScreen) {
+        element.webkitRequestFullScreen();
+      } else if (element.mozRequestFullScreen) {
+        element.mozRequestFullScreen();
+      }
+    }
+
+    let audio = document.getElementById("guidedMeditation");
+    let audioen = document.getElementById("guidedMeditation-english");
+
+    function playAudio(audio) {
+      if (audio.paused) {
+        audio.play();
+        pageScroll();
+      } else {
+        audio.pause();
+        pageScrollStop();
+      }
+    }
+
+    document.addEventListener("keyup", function (event) {
+      if (event.key === "k") {
+        if (audio.paused) {
+          audio.currentTime = 0;
+          audio.play();
+        } else {
+          audio.pause();
+        }
+      }
+      if (event.key === "e") {
+        if (audioen.paused) {
+          audioen.currentTime = 0;
+          audioen.play();
+        } else {
+          audioen.pause();
+        }
+      }
+    });
+
+    let scroll_position = 0; //Current scroll position
+    let end_scroll_position = 0; //Position when new Divs get created
+    let ticking = false; //only check for scroll_position, if user is actually scrolling
+    let messages = [
+      "social media meditation",
+      "mindful scrolling",
+      "#smm",
+      "trust the network",
+      "become one with your phone",
+      "endless scrolling",
+      "screen awareness",
+      "love and like",
+    ];
+
+    let wrapper = document.querySelector(".wrapper");
+    wrapper.addEventListener("scroll", function (e) {
+      scroll_position = wrapper.scrollTop;
+      // console.log('scrollY:', scroll_position)
+      if (!ticking) {
+        window.requestAnimationFrame(function () {
+          if (scroll_position >= end_scroll_position) {
+            let rand = Math.floor(Math.random() * 10 + 20);
+            let randX = Math.floor(Math.random() * 10 + 20);
+            let div = document.createElement("div");
+            div.className = "container";
+            div.style.height = rand.toString() + "vh";
+            div.style.width = randX.toString() + "vw";
+            div.style.transform = `translateX(${
+              (Math.random() - 0.5) * 20 * rand
+            }%)`;
+            if (Math.random() < 0.1) {
+              div.innerHTML =
+                messages[Math.floor(Math.random() * messages.length)];
+            }
+            wrapper.appendChild(div);
+            end_scroll_position = wrapper.scrollHeight - window.innerWidth * 2;
+          }
+          ticking = false;
+        });
+      }
+      ticking = true;
+    });
+
+    function pageScroll() {
+      wrapper.scrollBy(0, 1);
+      scrolldelay = setTimeout(pageScroll, 30);
+    }
+    
+    function pageScrollStop() {
+      console.log('stopped', scrolldelay)
+      clearTimeout(scrolldelay);
+    }
+
+    //pageScroll();
+  </script>
+</html>
