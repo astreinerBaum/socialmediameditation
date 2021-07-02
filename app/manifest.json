@@ -2,7 +2,7 @@
   "name": "Social Media Meditation",
   "short_name": "#SMM",
   "start_url": "./index.html",
-  "background_color": "#D5DCE8",
+  "background_color": "#FFFFFF",
   "theme_color": "#90949c",
   "icons": [
     {
